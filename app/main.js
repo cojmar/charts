@@ -1,8 +1,7 @@
 define(function(require) {
     require('css!assets/css/main');
     require('css!assets/css/bootstrap.min');
-    var $ = require('jquery');
-    
+    var $ = require('jquery');    
     require('bootstrap.min');
     var app = {
         debug: require('print'),
