@@ -7,14 +7,26 @@
     <title></title>
 </head>
 <body>
-    <div class="left_area">
-        <div id="editor">
+
+    <div class="panel-container">
+
+        <div class="panel-left">
+            <div class="panel-left-top">
+                <div class="pannel-button active">Chart 1</div>
+                <div class="pannel-button">Chart 2</div>
+                <div class="pannel-button">Chart 3</div>
+            </div>
+            <div id="editor"></div>
+        </div>
+        <div class="splitter">
+        </div>
+
+        <div class="panel-right">
+            <div id="chart"></div>
         </div>
     </div>
-    <div class="right_area">
-        <div id="chart">
-        </div>
-    </div>
+
+   
     <script data-main="app" src="require.js"></script>
 </body>
 </html>

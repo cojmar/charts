@@ -1,10 +1,9 @@
 define(function(require) {
-    require('css!assets/css/main');
-    require('css!assets/css/bootstrap.min');
-    require('css!assets/css/jquery-ui');
+    require('css!assets/css/main');    
     var $ = require('jquery');    
-    require('jquery-ui.min');
-    require('bootstrap.min');
+    //require('css!assets/css/jquery-ui');require('jquery-ui.min');        
+    //require('bootstrap.min');require('css!assets/css/bootstrap.min');
+    require('jquery-resizable');
     var app = {
         debug: require('print'),
         editor: require('./editor'),
@@ -22,34 +21,24 @@ define(function(require) {
             return app;
         },
         init_resize:function(){
-            var la = $( ".left_area" );
-            var ra = $( ".right_area" );
-            var ww = $(window);
-            la.resizable({
-                handles: 'e',
-                resize: function(event, ui) {
-                    ra.css('width',ww.width()- la.width()-5);
+            $(".panel-left").resizable({
+                handleSelector: ".splitter",
+                resizeHeight: false,
+                onDrag:function(){
+                    app.editor.layout();                    
+                },
+                onDragEnd:function(){
+                    app.editor.layout();                    
                 }
             });
-            
-            ra.resizable({
-                handles: 'w',
-                resize: function(event, ui) {
-                    la.css('width',ww.width()- ra.width()-5);
-                    ra.css('left','5px');
-                }
-            });
-            
-            
         },
         init: function() {
-            //app.init_resize();
+            app.init_resize();
             app.init_editor();
             app.debug("App Init Ok");
         }
     };
     $(function() {
         app.init();
-    })
-    return app.editor;
+    })    
 });
