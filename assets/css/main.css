@@ -9,23 +9,23 @@ body {
     margin: 0;
 }
 
-#editor {
+#editor,
+#chart {
+    height: 100%;
+    width: 100%;
+}
+
+.left_area {
     position: fixed;
     top: 0px;
     bottom: 0px;
     left: 0px;
     right: 50%;
 }
-#chart{
+.right_area {
     position: fixed;
     top: 0px;
     bottom: 0px;
     left: 50%;
     right: 0px;
-}
-.chart_body {
-padding: 10, 1, 1, 10;
-
-
-
 }
