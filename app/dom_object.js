@@ -7,6 +7,6 @@ define(function(require) {
             selector = $('#' + dom_id);
         }
         if (!selector.length > 0) return false;
-        return selector.get(0);
+        return selector;
     };
 });

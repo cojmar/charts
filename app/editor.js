@@ -18,6 +18,7 @@ define(function(require) {
         },
         init_monaco: function() {
             if (obj.editor_selector = obj.dom_object('editor')) {
+                obj.editor_selector = obj.editor_selector.get(0);
 
                 obj.editor = monaco.editor.create(obj.editor_selector, {
                     value: '',

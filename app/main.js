@@ -7,12 +7,11 @@ define(function(require) {
         chart: require('./chart'),
         on_editor_change: function() {
             var val = app.editor.getValue();
-            eval("var my_obj_val=" + val);
-            app.chart.setValue(my_obj_val);
+            app.chart.setValue(val);
         },
         init_editor: function() {
             app.editor.on_change = app.on_editor_change;
-            app.editor.setValue(require('text!assets/default_editor_text.txt'));
+            app.editor.setValue(require('text!assets/default_script.js'));
             setTimeout(function() {
                 app.editor.do_action('Format Document');
             }, 100);
