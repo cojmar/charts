@@ -1,6 +1,7 @@
 define(function(require) {
     require('css!assets/css/main');
     require('css!assets/css/bootstrap.min');
+    require('css!assets/css/jquery-ui');
     var $ = require('jquery');    
     require('jquery-ui.min');
     require('bootstrap.min');
@@ -21,10 +22,25 @@ define(function(require) {
             return app;
         },
         init_resize:function(){
-            $( ".left_area" ).resizable({
-                alsoResize: ".right_area"
-              });
-            $( ".right_area" ).resizable();
+            var la = $( ".left_area" );
+            var ra = $( ".right_area" );
+            var ww = $(window);
+            la.resizable({
+                handles: 'e',
+                resize: function(event, ui) {
+                    ra.css('width',ww.width()- la.width()-5);
+                }
+            });
+            
+            ra.resizable({
+                handles: 'w',
+                resize: function(event, ui) {
+                    la.css('width',ww.width()- ra.width()-5);
+                    ra.css('left','5px');
+                }
+            });
+            
+            
         },
         init: function() {
             //app.init_resize();
