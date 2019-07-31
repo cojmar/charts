@@ -1,8 +1,9 @@
-define(function(require, app) {
+define(function(require) {
     var monaco = require('vs/editor/editor.main');
     var $ = require('jquery');
     var obj = {
         editor: false,
+        dom_object: require('./dom_object'),
         monaco_layout: function() {
             if (!obj.editor) return false;
             obj.editor.layout();
@@ -16,16 +17,12 @@ define(function(require, app) {
             }, 1000);
         },
         init_monaco: function() {
-            obj.editor_selector = $('#editor');
-            if (!obj.editor_selector.length > 0) {
-                $('body').append('<div id="editor"></div>');
-                obj.editor_selector = $('#editor');
-            }
-            if (obj.editor_selector.length > 0) {
-                obj.editor = monaco.editor.create(obj.editor_selector.get(0), {
+            if (obj.editor_selector = obj.dom_object('editor')) {
+
+                obj.editor = monaco.editor.create(obj.editor_selector, {
                     value: '',
                     theme: 'vs-dark',
-                    language: 'html',
+                    language: 'javascript',
                     scrollBeyondLastColumn: true,
                     scrollBeyondLastLine: true,
 

@@ -4,9 +4,11 @@ define(function(require) {
     var app = {
         debug: require('print'),
         editor: require('./editor'),
+        chart: require('./chart'),
         on_editor_change: function() {
             var val = app.editor.getValue();
-            app.debug(val);
+            eval("var my_obj_val=" + val);
+            app.chart.setValue(my_obj_val);
         },
         init_editor: function() {
             app.editor.on_change = app.on_editor_change;
