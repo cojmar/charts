@@ -14,7 +14,8 @@ requirejs.config({
     paths: {
         jquery: 'jquery.min',
         app: '../app',
-        assets: '../assets'
+        assets: '../assets',
+        popper:'proper.min',
 
     }
 });
