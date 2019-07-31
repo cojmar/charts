@@ -10,9 +10,9 @@ define(function(require) {
             app.chart.setValue(val);
         },
         init_editor: function() {
-            app.editor.on_change = app.on_editor_change;
             app.editor.setValue(require('text!assets/default_script.js'));
             setTimeout(function() {
+                app.editor.on_change = app.on_editor_change;
                 app.editor.do_action('Format Document');
             }, 100);
             return app;
