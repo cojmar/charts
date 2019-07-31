@@ -2,6 +2,7 @@ define(function(require) {
     require('css!assets/css/main');
     require('css!assets/css/bootstrap.min');
     var $ = require('jquery');    
+    require('jquery-ui.min');
     require('bootstrap.min');
     var app = {
         debug: require('print'),
@@ -19,7 +20,14 @@ define(function(require) {
             }, 100);
             return app;
         },
+        init_resize:function(){
+            $( ".left_area" ).resizable({
+                alsoResize: ".right_area"
+              });
+            $( ".right_area" ).resizable();
+        },
         init: function() {
+            //app.init_resize();
             app.init_editor();
             app.debug("App Init Ok");
         }
