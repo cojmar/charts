@@ -11,8 +11,21 @@ body {
 
 #editor {
     position: fixed;
-    top: 100px;
+    top: 0px;
     bottom: 0px;
     left: 0px;
+    right: 50%;
+}
+#chart{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 50%;
     right: 0px;
+}
+.chart_body {
+padding: 10, 1, 1, 10;
+
+
+
 }
