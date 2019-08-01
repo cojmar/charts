@@ -14,7 +14,7 @@ define(function(require) {
             clearTimeout(obj.timeout_editor_changed);
             obj.timeout_editor_changed = setTimeout(function() {
                 if (typeof obj.editor.on_change === 'function') obj.editor.on_change();
-            }, 1000);
+            }, 100);
         },
         init_monaco: function() {
             if (obj.editor_selector = obj.dom_object('editor')) {

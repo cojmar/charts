@@ -5,6 +5,11 @@ define(function(require) {
     //require('bootstrap.min');require('css!assets/css/bootstrap.min');
     require('jquery-resizable');
     var app = {
+        menu_items:{
+            'Chart 1':require('text!./charts/chart_1.js'),
+            'Chart 2':require('text!./charts/chart_2.js'),
+            'Chart 3':require('text!./charts/chart_3.js')
+        },
         debug: require('print'),
         editor: require('./editor'),
         chart: require('./chart'),
@@ -13,11 +18,7 @@ define(function(require) {
             app.chart.setValue(val);
         },
         init_editor: function() {
-            app.editor.setValue(require('text!assets/default_script.js'));
-            setTimeout(function() {
-                app.editor.on_change = app.on_editor_change;
-                app.editor.do_action('Format Document');
-            }, 100);
+            app.editor.on_change = app.on_editor_change;
             return app;
         },
         init_resize:function(){
@@ -32,13 +33,31 @@ define(function(require) {
                 }
             });
         },
+        show_active_menu_item:function(){
+            var item = $('.menu-item.active').data('item');
+            app.editor.setValue(app.menu_items[item]);     
+            app.editor.do_action('Format Document');       
+        },
+        init_menu:function(){                    
+            for (var menu_item in app.menu_items){                                            
+                $('#menu').append('<div class="menu-item" data-item="'+menu_item+'">'+menu_item+'</div>');
+            }            
+            $('.menu-item').on('click',function(){
+                $('.menu-item').removeClass('active');
+                $(this).addClass('active');
+                app.show_active_menu_item();
+            });
+            $($('.menu-item').get(0)).addClass('active');
+            app.show_active_menu_item();
+        },
         init: function() {
+            app.init_menu();
             app.init_resize();
-            app.init_editor();
+            app.init_editor();            
             app.debug("App Init Ok");
         }
     };
     $(function() {
         app.init();
-    })    
+    });        
 });
