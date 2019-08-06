@@ -4,12 +4,8 @@ define(function(require) {
     //require('css!assets/css/jquery-ui');require('jquery-ui.min');        
     //require('bootstrap.min');require('css!assets/css/bootstrap.min');
     require('jquery-resizable');
-    var app = {
-        menu_items:{
-            'Chart 1':require('text!./charts/chart_1.js'),
-            'Chart 2':require('text!./charts/chart_2.js'),
-            'Chart 3':require('text!./charts/chart_3.js')
-        },
+    var app = {        
+        menu_items:require('git-folder!https://api.github.com/repos/cojmar/charts/contents/app/charts?ref=master'),
         debug: require('print'),
         editor: require('./editor'),
         chart: require('./chart'),
@@ -58,6 +54,6 @@ define(function(require) {
         }
     };
     $(function() {
-        app.init();
+        app.init();        
     });        
 });

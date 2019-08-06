@@ -9,6 +9,7 @@ requirejs.config({
         "*": {
             "text": "require-text",
             "css": "require-css",
+            "git-folder":"require-git-folder",
         }
     },
     paths: {
