@@ -31,7 +31,8 @@ define(function(require) {
                 obj.editor.onDidChangeModelContent(obj.on_editor_change);
                 obj.editor.do_action = function(action) {
                     var actions = obj.editor.getActions();
-                    for (var editor_action of actions) {
+                    for (var editor_action_index in actions) {
+                        var editor_action = actions[editor_action_index];
                         if (editor_action.label === action) {
                             editor_action.run();
                             break;
