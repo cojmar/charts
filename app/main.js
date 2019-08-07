@@ -8,10 +8,10 @@ define(function(require) {
         menu_items:require('git-folder!https://api.github.com/repos/cojmar/charts/contents/app/charts?ref=master'),
         debug: require('print'),
         editor: require('./editor'),
-        chart: require('./chart'),
+        preview: require('./preview'),
         on_editor_change: function() {
             var val = app.editor.getValue();
-            app.chart.setValue(val);
+            app.preview.setValue(val);
         },
         init_editor: function() {
             app.editor.on_change = app.on_editor_change;

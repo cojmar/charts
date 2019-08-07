@@ -1,26 +1,26 @@
 define(function(require) {
     var obj = {
         dom_object: require('./dom_object'),
-        chart_head: require('text!assets/preview.html'),
-        chart_selector: false,
-        set_chart: function(data) {
-            if (!obj.chart_selector.html) return false;
-            obj.chart_selector.html('<iframe id="preview_frame" style="width:100%;height:100%;border:none;" />');
+        preview_head: require('text!assets/preview.html'),
+        preview_selector: false,
+        set_preview: function(data) {
+            if (!obj.preview_selector.html) return false;
+            obj.preview_selector.html('<iframe id="preview_frame" style="width:100%;height:100%;border:none;" />');
             var iframe = document.getElementById('preview_frame');
             iframe = iframe.contentWindow || (iframe.contentDocument.document || iframe.contentDocument);
             iframe.document.open();
-            iframe.document.write(obj.chart_head);
+            iframe.document.write(obj.preview_head);
             iframe.document.write('<script>' + data + '</script>');
             iframe.document.close();
 
         },
-        init_chart: function() {
-            obj.chart_selector = obj.dom_object('chart');
+        init_preview: function() {
+            obj.preview_selector = obj.dom_object('preview');
         },
         init: function() {
-            obj.init_chart();
+            obj.init_preview();
             return {
-                setValue: obj.set_chart
+                setValue: obj.set_preview
             }
         }
     };
