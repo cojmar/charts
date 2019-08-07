@@ -5,7 +5,7 @@ define(function(require) {
     //require('bootstrap.min');require('css!assets/css/bootstrap.min');
     require('jquery-resizable');
     var app = {        
-        menu_items:require('git-folder!https://api.github.com/repos/cojmar/charts/contents/app/assets/preview_files?ref=master'),
+        menu_items:require('git-folder!https://api.github.com/repos/cojmar/charts/contents/assets/preview_files?ref=master'),
         debug: require('print'),
         editor: require('./editor'),
         preview: require('./preview'),
